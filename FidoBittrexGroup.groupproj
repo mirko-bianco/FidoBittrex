@@ -1,0 +1,60 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{E5774475-B82D-42F7-9D7D-D3C68A4414D7}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Sources\FidoBittrex.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Tests\BittrexTests.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Examples\BittrexExample.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="FidoBittrex">
+        <MSBuild Projects="Sources\FidoBittrex.dproj"/>
+    </Target>
+    <Target Name="FidoBittrex:Clean">
+        <MSBuild Projects="Sources\FidoBittrex.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="FidoBittrex:Make">
+        <MSBuild Projects="Sources\FidoBittrex.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="BittrexTests">
+        <MSBuild Projects="Tests\BittrexTests.dproj"/>
+    </Target>
+    <Target Name="BittrexTests:Clean">
+        <MSBuild Projects="Tests\BittrexTests.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="BittrexTests:Make">
+        <MSBuild Projects="Tests\BittrexTests.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="BittrexExample">
+        <MSBuild Projects="Examples\BittrexExample.dproj"/>
+    </Target>
+    <Target Name="BittrexExample:Clean">
+        <MSBuild Projects="Examples\BittrexExample.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="BittrexExample:Make">
+        <MSBuild Projects="Examples\BittrexExample.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="FidoBittrex;BittrexTests;BittrexExample"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="FidoBittrex:Clean;BittrexTests:Clean;BittrexExample:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="FidoBittrex:Make;BittrexTests:Make;BittrexExample:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

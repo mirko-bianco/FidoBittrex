@@ -1,0 +1,84 @@
+package FidoBittrex;
+
+{$R *.res}
+{$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO OFF}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION OFF}
+{$OVERFLOWCHECKS ON}
+{$RANGECHECKS ON}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES ON}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DEFINE DEBUG}
+{$ENDIF IMPLICITBUILDING}
+{$RUNONLY}
+{$IMPLICITBUILD ON}
+
+requires
+  rtl,
+  bindengine,
+  soaprtl,
+  dbrtl,
+  IndySystem,
+  IndyProtocols,
+  IndyCore,
+  bindcomp,
+  RESTComponents,
+  Spring.Base,
+  FidoCore;
+
+contains
+  Fido.Bittrex.Api.Account in 'Fido.Bittrex.Api.Account.pas',
+  Fido.Bittrex.Api.Account.Types in 'Fido.Bittrex.Api.Account.Types.pas',
+  Fido.Bittrex.Api.Addresses in 'Fido.Bittrex.Api.Addresses.pas',
+  Fido.Bittrex.Api.Addresses.Types in 'Fido.Bittrex.Api.Addresses.Types.pas',
+  Fido.Bittrex.Api.Balances in 'Fido.Bittrex.Api.Balances.pas',
+  Fido.Bittrex.Api.Balances.Types in 'Fido.Bittrex.Api.Balances.Types.pas',
+  Fido.Bittrex.Api.ConditionalOrders in 'Fido.Bittrex.Api.ConditionalOrders.pas',
+  Fido.Bittrex.Api.ConditionalOrders.Types in 'Fido.Bittrex.Api.ConditionalOrders.Types.pas',
+  Fido.Bittrex.Api.Configurations in 'Fido.Bittrex.Api.Configurations.pas',
+  Fido.Bittrex.Api.Currencies in 'Fido.Bittrex.Api.Currencies.pas',
+  Fido.Bittrex.Api.Currencies.Types in 'Fido.Bittrex.Api.Currencies.Types.pas',
+  Fido.Bittrex.Api.Deposits in 'Fido.Bittrex.Api.Deposits.pas',
+  Fido.Bittrex.Api.Deposits.Types in 'Fido.Bittrex.Api.Deposits.Types.pas',
+  Fido.Bittrex.Api.Entities in 'Fido.Bittrex.Api.Entities.pas',
+  Fido.Bittrex.Api.Executions in 'Fido.Bittrex.Api.Executions.pas',
+  Fido.Bittrex.Api.Executions.Types in 'Fido.Bittrex.Api.Executions.Types.pas',
+  Fido.Bittrex.Api.FundTransferMethods in 'Fido.Bittrex.Api.FundTransferMethods.pas',
+  Fido.Bittrex.Api.FundTransferMethods.Types in 'Fido.Bittrex.Api.FundTransferMethods.Types.pas',
+  Fido.Bittrex.Api.Intf in 'Fido.Bittrex.Api.Intf.pas',
+  Fido.Bittrex.Api.Markets in 'Fido.Bittrex.Api.Markets.pas',
+  Fido.Bittrex.Api.Markets.Types in 'Fido.Bittrex.Api.Markets.Types.pas',
+  Fido.Bittrex.Api.Orders in 'Fido.Bittrex.Api.Orders.pas',
+  Fido.Bittrex.Api.Orders.Types in 'Fido.Bittrex.Api.Orders.Types.pas',
+  Fido.Bittrex.Api in 'Fido.Bittrex.Api.pas',
+  Fido.Bittrex.Api.Ping in 'Fido.Bittrex.Api.Ping.pas',
+  Fido.Bittrex.Api.Ping.Types in 'Fido.Bittrex.Api.Ping.Types.pas',
+  Fido.Bittrex.Api.Withdrawals in 'Fido.Bittrex.Api.Withdrawals.pas',
+  Fido.Bittrex.Api.Withdrawals.Types in 'Fido.Bittrex.Api.Withdrawals.Types.pas',
+  Fido.Bittrex.Intf in 'Fido.Bittrex.Intf.pas',
+  Fido.Bittrex in 'Fido.Bittrex.pas',
+  Fido.Bittrex.Registration in 'Fido.Bittrex.Registration.pas',
+  Fido.Bittrex.Types in 'Fido.Bittrex.Types.pas',
+  Fido.Bittrex.Websockets.Intf in 'Fido.Bittrex.Websockets.Intf.pas',
+  Fido.Bittrex.Websockets in 'Fido.Bittrex.Websockets.pas',
+  Fido.Bittrex.Websockets.Types in 'Fido.Bittrex.Websockets.Types.pas',
+  Fido.Bittrex.WebsocketStream in 'Fido.Bittrex.WebsocketStream.pas',
+  Fido.Bittrex.WebsocketStreams in 'Fido.Bittrex.WebsocketStreams.pas',
+  Fido.Bittrex.WebsocketStream.Intf in 'Fido.Bittrex.WebsocketStream.Intf.pas';
+
+end.
