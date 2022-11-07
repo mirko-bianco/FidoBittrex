@@ -377,7 +377,7 @@ end;
 
 function TBittrexWebsockets.SubscribeTo(const Channels: array of string): TSignalRMethodResult;
 begin
-  Result := FWS.Send<IReadonlyList<string>>(HUB, 'Subscribe', TCollections.CreateList<string>(Channels).AsReadOnlyList, function(const Message: string): TSignalRMethodResult
+  Result := FWS.Send<IReadonlyList<string>>(HUB, 'Subscribe', TCollections.CreateList<string>(Channels).AsReadOnly, function(const Message: string): TSignalRMethodResult
     var
       SubscribeResult: IBittrexWebsocketSubscribeResult;
       LResult: Boolean;
@@ -399,7 +399,7 @@ end;
 
 function TBittrexWebsockets.UnsubscribeFrom(const Channels: array of string): TSignalRMethodResult;
 begin
-  Result := FWS.Send<IReadonlyList<string>>(HUB, 'Unsubscribe', TCollections.CreateList<string>(Channels).AsReadOnlyList, function(const Message: string): TSignalRMethodResult
+  Result := FWS.Send<IReadonlyList<string>>(HUB, 'Unsubscribe', TCollections.CreateList<string>(Channels).AsReadOnly, function(const Message: string): TSignalRMethodResult
     var
       UnsubscribeResult: IBittrexWebsocketUnsubscribeResult;
       LResult: Boolean;

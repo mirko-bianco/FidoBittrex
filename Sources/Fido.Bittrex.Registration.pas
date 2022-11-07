@@ -79,7 +79,7 @@ procedure Register(
   const OnWebSocketError: TWebSocketOnError;
   const SubAccountId: string);
 begin
-  Container.RegisterType<IBittrexAuthenticatedApiConfiguration>.DelegateTo(
+  Container.RegisterType<IBittrexAuthenticatedApiConfiguration>(
     function: IBittrexAuthenticatedApiConfiguration
     begin
       Result := TBittrexAuthenticatedApiConfiguration.Create(
@@ -102,13 +102,13 @@ begin
   Container.RegisterType<IBittrexPingApi, TJSONClientVirtualApi<IBittrexPingApi, IBittrexAuthenticatedApiConfiguration>>;
   Container.RegisterType<IBittrexWithdrawalsApi, TJSONClientVirtualApi<IBittrexWithdrawalsApi, IBittrexAuthenticatedApiConfiguration>>;
 
-  Container.RegisterType<IBittrexWebsockets>.DelegateTo(
+  Container.RegisterType<IBittrexWebsockets>(
     function: IBittrexWebsockets
     begin
       Result := TBittrexWebsockets.Create(Container.Resolve<IWebSocketClient>, ApiSecret, ApiKey, SubAccountId, OnWebSocketError);
     end);
 
-  Container.RegisterType<IBittrexApi>.DelegateTo(
+  Container.RegisterType<IBittrexApi>(
     function: IBittrexApi
     begin
       Result := TBittrexApi.Create(ApiSecret, ApiKey,
@@ -127,7 +127,7 @@ begin
         SubAccountId);
     end);
 
-  Container.RegisterType<IBittrex>.DelegateTo(
+  Container.RegisterType<IBittrex>(
     function: IBittrex
     begin
       Result := TBittrex.Create(

@@ -96,7 +96,7 @@ begin
   FOnUpdatedData := Utilities.CheckNotNullAndSet<TOnUpdatedData<TApiData>>(OnUpdatedData, 'OnUpdatedData');
   Utilities.CheckNotNullAndSet<TSetOnWebsocketEvent<TWebSocketData>>(SetOnWebsocketEvent, 'SetOnWebsocketEvent');
   SetOnWebsocketEvent(Bittrex, OnReceivedWebsocketData);
-  OnUpdatedData(GetApiData.Data, TCollections.CreateList<TApiData>.AsReadonlyList);
+  OnUpdatedData(GetApiData.Data, TCollections.CreateList<TApiData>.AsReadonly);
 end;
 
 destructor TBittrexWebsocketStream<TWebSocketData, TApiData>.Destroy;
@@ -110,11 +110,11 @@ end;
 function TBittrexWebsocketStream<TWebSocketData, TApiData>.GetData: IReadOnlyList<TApiData>;
 begin
   if FDestroying then
-    Exit(TCollections.CreateList<TApiData>([]).AsReadOnlyList);
+    Exit(TCollections.CreateList<TApiData>([]).AsReadOnly);
 
   FLock.BeginRead;
   try
-    Result := TCollections.CreateList<TApiData>(FDataMap.Values).AsReadOnlyList;
+    Result := TCollections.CreateList<TApiData>(FDataMap.Values).AsReadOnly;
   finally
     FLock.EndRead;
   end;
@@ -215,7 +215,7 @@ begin
   try
     if not FDataMap.TryGetValue(MakeKey(marketSymbol, candleInterval), Data) then
       Data := TCollections.CreateList<IBittrexCandle>;
-    Result := TCollections.CreateList<IBittrexCandle>(Data).AsReadOnlyList;
+    Result := TCollections.CreateList<IBittrexCandle>(Data).AsReadOnly;
   finally
     FLock.EndRead;
   end;
@@ -312,7 +312,7 @@ begin
     end;
 
     Data := GetData(WebsocketData.marketSymbol,  Interval);
-    FOnUpdatedData(WebsocketData.marketSymbol,  Interval, Data, TCollections.CreateList<IBittrexCandle>([Item]).AsReadOnlyList);
+    FOnUpdatedData(WebsocketData.marketSymbol,  Interval, Data, TCollections.CreateList<IBittrexCandle>([Item]).AsReadOnly);
   end;
 end;
 
@@ -326,7 +326,7 @@ begin
     SignalRMethodResult := FBittrex.SubscribeWebsocketTo([BittrexWebsocketChannels.CandleAsString(marketSymbol, candleInterval)]);
   until SignalRMethodResult.Success;
 
-  FOnUpdatedData(marketSymbol, candleInterval, GetData(marketSymbol, candleInterval), TCollections.CreateList<IBittrexCandle>.AsReadonlyList);
+  FOnUpdatedData(marketSymbol, candleInterval, GetData(marketSymbol, candleInterval), TCollections.CreateList<IBittrexCandle>.AsReadOnly);
 end;
 
 procedure TBittrexWebsocketCandleStream.Unsubscribe(

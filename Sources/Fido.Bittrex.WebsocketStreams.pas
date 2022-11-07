@@ -61,7 +61,7 @@ begin
     end,
     function(const Data: IBittrexWebsocketBalance): IReadonlyList<IBittrexBalance>
     begin
-      Result := TCollections.CreateList<IBittrexBalance>([Data.delta]).AsReadOnlyList;
+      Result := TCollections.CreateList<IBittrexBalance>([Data.delta]).AsReadOnly;
     end,
     procedure(const Map: IDictionary<string, IBittrexBalance>; const Item: IBittrexBalance)
     begin
@@ -110,7 +110,7 @@ begin
     end,
     function(const Data: IBittrexWebsocketConditionalOrder): IReadonlyList<IBittrexConditionalOrder>
     begin
-      Result := TCollections.CreateList<IBittrexConditionalOrder>([Data.delta]).AsReadOnlyList;
+      Result := TCollections.CreateList<IBittrexConditionalOrder>([Data.delta]).AsReadOnly;
     end,
     procedure(const Map: IDictionary<string, IBittrexConditionalOrder>; const Item: IBittrexConditionalOrder)
     begin
@@ -152,7 +152,7 @@ begin
     end,
     function(const Data: IBittrexWebsocketOrder): IReadonlyList<IBittrexOrder>
     begin
-      Result := TCollections.CreateList<IBittrexOrder>([Data.delta]).AsReadOnlyList;
+      Result := TCollections.CreateList<IBittrexOrder>([Data.delta]).AsReadOnly;
     end,
     procedure(const Map: IDictionary<string, IBittrexOrder>; const Item: IBittrexOrder)
     begin
